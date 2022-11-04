@@ -5,11 +5,6 @@ pipeline {
         jdk 'jdk1.8'
     }
   stages{
-    stage('hello') {
-      steps {
-        echo 'hello from Jenkinsfile'
-      }
-    }
     stage('BUILD: prepare environment'){ 
       when {
         anyOf { branch 'develop'; branch 'main' }
