@@ -27,7 +27,7 @@ pipeline {
         branch 'develop'
       }
       steps {
-        sh uat_script.sh
+        sh 'pwd'
       }
     }
     stage('DEPLOY: main'){
