@@ -5,11 +5,6 @@ pipeline {
         jdk 'jdk1.8'
     }
   stages{
-    stage('hello') {
-      steps {
-        echo 'hello from Jenkinsfile'
-      }
-    }
     stage('BUILD: prepare environment'){ 
       when {
         anyOf { branch 'develop'; branch 'main' }
@@ -27,15 +22,17 @@ pipeline {
         branch 'develop'
       }
       steps {
-        sh 'mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.4.0 -Danypoint.username=khoamule8 -Danypoint.password=123456Aaq -Denv=Sandbox -Dbusiness=Tiki -DvCore=Micro -Dworkers=1'
-      }
+          sh 'chmod +x /Users/khoahoang/.jenkins/demoproject/uat_script.sh'
+          sh '/Users/khoahoang/.jenkins/demoproject/uat_script.sh'
+        }
     }
     stage('DEPLOY: main'){
       when {
         branch 'main'
       }
       steps {
-        sh 'mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.4.0 -Danypoint.username=khoamule7 -Danypoint.password=123456Aa@ -Denv=Sandbox -Dbusiness=Tiki -DvCore=Micro -Dworkers=1'
+          sh 'chmod +x /Users/khoahoang/.jenkins/demoproject/prod_script.sh'
+          sh '/Users/khoahoang/.jenkins/demoproject/prod_script.sh'
       }
     }
   }
