@@ -27,7 +27,7 @@ pipeline {
         branch 'develop'
       }
       steps {
-        sh 'pwd'
+        sh /Users/khoahoang/.jenkins/demoproject/uat_script.sh
       }
     }
     stage('DEPLOY: main'){
