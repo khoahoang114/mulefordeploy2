@@ -31,7 +31,8 @@ pipeline {
         branch 'main'
       }
       steps {
-        sh 'mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.4.0 -Danypoint.username=khoamule7 -Danypoint.password=123456Aa@ -Denv=Sandbox -Dbusiness=Tiki -DvCore=Micro -Dworkers=1'
+          sh 'chmod +x /Users/khoahoang/.jenkins/demoproject/prod_script.sh'
+          sh '/Users/khoahoang/.jenkins/demoproject/prod_script.sh'
       }
     }
   }
