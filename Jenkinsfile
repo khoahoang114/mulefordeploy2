@@ -27,7 +27,7 @@ pipeline {
         branch 'develop'
       }
       steps {
-        sh 'mvn clean deploy -DmuleDeploy -DskipTests -Dmule.version=4.4.0 -Danypoint.username=khoamule8 -Danypoint.password=123456Aaq -Denv=Sandbox -Dbusiness=Tiki -DvCore=Micro -Dworkers=1'
+        sh uat_script.sh
       }
     }
     stage('DEPLOY: main'){
