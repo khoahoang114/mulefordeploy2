@@ -22,7 +22,10 @@ pipeline {
         branch 'develop'
       }
       steps {
-        sh '/Users/khoahoang/.jenkins/demoproject/uat_script.sh'
+        dir ('/Users/khoahoang/.jenkins/demoproject') { 
+          sh 'chmod +x ./uat_script.sh'
+          sh './uat_script.sh'
+        }
       }
     }
     stage('DEPLOY: main'){
