@@ -14,6 +14,6 @@ http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/cu
 		<flow-ref doc:name="REF response" doc:id="39399eb2-a9a8-4736-96a8-f34338b5a180" name="response"/>
 	</flow>
 	<flow name="response" doc:id="40712759-1950-499c-806e-c2ba4a8de28e" >
-		<set-payload value="1234" doc:name="abc" doc:id="96b43794-6d06-493c-9777-a66d3ae88131" />
+		<set-payload value="123" doc:name="abc" doc:id="96b43794-6d06-493c-9777-a66d3ae88131" />
 	</flow>
 </mule>
