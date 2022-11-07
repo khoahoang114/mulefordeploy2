@@ -1,4 +1,4 @@
 %dw 2.0
 import * from dw::test::Asserts
 ---
-payload must equalTo("1234")
+payload must equalTo("12345")
