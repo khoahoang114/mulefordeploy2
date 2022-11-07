@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
-	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+<mule xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd">
 	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="54b2dea9-eb5b-437f-80f8-adde09baa752" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
 	<flow name="mulefordeploy2Flow" doc:id="9ee0a5b5-c096-46d6-b734-a232c0d9f4ae" >
 		<http:listener doc:name="/mule4deploy2" doc:id="8951bf70-b07f-4be8-be29-e3cc6333de53" config-ref="HTTP_Listener_config" path="/mule4deploy2"/>
 		<logger level="INFO" doc:name="Logger" doc:id="485eae04-3d54-4606-95b4-92343f61e610" message="CALL HERE mule4deploy2"/>
-		<set-payload value="/mule4deploy2 SUCCESS" doc:name="Set Payload" doc:id="96b43794-6d06-493c-9777-a66d3ae88131" />
+		<flow-ref doc:name="REF response" doc:id="39399eb2-a9a8-4736-96a8-f34338b5a180" name="response"/>
+	</flow>
+	<flow name="response" doc:id="40712759-1950-499c-806e-c2ba4a8de28e" >
+		<set-payload value="123" doc:name="abc" doc:id="96b43794-6d06-493c-9777-a66d3ae88131" />
 	</flow>
 </mule>

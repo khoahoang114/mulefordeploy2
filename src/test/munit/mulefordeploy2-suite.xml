@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="mulefordeploy2-suite.xml" />
+	<munit:test name="mulefordeploy2Flow-test" doc:id="bbc47499-fb01-411f-9ae1-9e26b554f5f7" >
+		<munit:behavior >
+			<munit:set-event doc:name="Set Input" doc:id="92d7f823-3731-4afc-a79c-db2867eee9b8" >
+				<munit:payload value="#[readUrl('classpath://mulefordeploy2Flowtest/set-event_payload.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://mulefordeploy2Flowtest/set-event_attributes.dwl')]" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to mulefordeploy2Flow" doc:id="4eb13cee-d413-4882-8126-4299077a4d75" name="mulefordeploy2Flow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="efd0f54a-0b50-41ce-915d-cd48be9a748c" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import mulefordeploy2Flowtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+
+</mule>
