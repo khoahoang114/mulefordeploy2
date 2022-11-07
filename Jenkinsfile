@@ -5,16 +5,25 @@ pipeline {
         jdk 'jdk1.8'
     }
   stages{
-    stage('BUILD: prepare environment'){ 
+    stage('Prepare environment'){ 
       when {
         anyOf { branch 'develop'; branch 'main' }
       }
       steps {
-        echo 'prepare Maven, Java JDK'
+        echo 'Check Maven, Java JDK'
         sh  """
               mvn --version
               java -version
             """
+      }
+    }
+    stage('Test'){ 
+      when {
+        anyOf { branch 'develop'; branch 'main' }
+      }
+      steps {
+        echo 'Running Munit test'
+        sh  "mvn clean test"
       }
     }
     stage('DEPLOY: develop'){
